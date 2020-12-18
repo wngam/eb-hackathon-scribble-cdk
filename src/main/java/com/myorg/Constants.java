@@ -9,6 +9,7 @@ public class Constants {
   static final String SCRIBBLE_SERVICE_BUILD_PROJECT_ID = SCRIBBLE_SERVICE_NAME + "BuildProject";
   static final String SCRIBBLE_SERVICE_PIPELINE_ID = SCRIBBLE_SERVICE_NAME + "Pipeline";
   static final String SCRIBBLE_SERVICE_ECS_SERVICE_ID = SCRIBBLE_SERVICE_NAME + "EcsService";
+  static final String SCRIBBLE_SERVICE_SCALING_POLICY_ID = SCRIBBLE_SERVICE_NAME + "ScalingPolicy";
 
   static final String CODE_REPOSITORY_BRANCH = "master";
 

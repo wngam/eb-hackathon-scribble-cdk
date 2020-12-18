@@ -10,6 +10,7 @@ public class Constants {
   static final String SCRIBBLE_SERVICE_PIPELINE_ID = SCRIBBLE_SERVICE_NAME + "Pipeline";
   static final String SCRIBBLE_SERVICE_ECS_SERVICE_ID = SCRIBBLE_SERVICE_NAME + "EcsService";
   static final String SCRIBBLE_SERVICE_SCALING_POLICY_ID = SCRIBBLE_SERVICE_NAME + "ScalingPolicy";
+  static final String SCRIBBLE_SERVICE_PLAYER_TABLE_ID = SCRIBBLE_SERVICE_NAME + "PlayerTable";
 
   static final String CODE_REPOSITORY_BRANCH = "master";
 
@@ -17,4 +18,6 @@ public class Constants {
   static final String IMAGE_TAG = "latest";
 
   static final String CONTAINER_NAME = SCRIBBLE_SERVICE_NAME.toLowerCase();
+
+  static final String PLAYER_TABLE_NAME = SCRIBBLE_SERVICE_NAME + "Players";
 }

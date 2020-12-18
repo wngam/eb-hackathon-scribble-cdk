@@ -5,7 +5,7 @@ import software.amazon.awscdk.core.Stack;
 import software.amazon.awscdk.core.StackProps;
 import software.amazon.awscdk.services.codebuild.Project;
 import software.amazon.awscdk.services.codecommit.Repository;
-import software.amazon.awscdk.services.ecs.FargateService;
+import software.amazon.awscdk.services.ecs.patterns.ApplicationLoadBalancedFargateService;
 
 public class ScribbleServiceCdkStack extends Stack {
 
@@ -22,12 +22,15 @@ public class ScribbleServiceCdkStack extends Stack {
     ScribbleServiceCdkCodeBuild codeBuild = new ScribbleServiceCdkCodeBuild(this);
     ScribbleServiceCdkEcs ecs = new ScribbleServiceCdkEcs(this);
     ScribbleServiceCdkCodePipeline codePipeline = new ScribbleServiceCdkCodePipeline(this);
+    ScribbleServiceCdkDynamoDb dynamoDb = new ScribbleServiceCdkDynamoDb(this);
 
     Repository codeRepository = codeCommit.createRepository();
     software.amazon.awscdk.services.ecr.Repository imageRepository = ecr.createRepository();
     Project project = codeBuild.createProject();
     codeBuild.addEcrPermissionToRole();
-    FargateService service = ecs.createEcsService(imageRepository).getService();
-    codePipeline.createPipeline(codeRepository, project, service);
+    ApplicationLoadBalancedFargateService service = ecs.createEcsService(imageRepository);
+    codePipeline.createPipeline(codeRepository, project, service.getService());
+    dynamoDb.createTable();
+    dynamoDb.grantReadWriteDataPermission(service.getTaskDefinition().getTaskRole());
   }
 }

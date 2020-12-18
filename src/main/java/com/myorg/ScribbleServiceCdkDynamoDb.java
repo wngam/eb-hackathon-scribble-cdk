@@ -15,7 +15,7 @@ import software.constructs.Construct;
 @RequiredArgsConstructor
 public class ScribbleServiceCdkDynamoDb {
 
-  private static final String PARTITION_KEY_NAME = "ID";
+  private static final String PARTITION_KEY_NAME = "Name";
 
   private final Construct scope;
   @Getter
